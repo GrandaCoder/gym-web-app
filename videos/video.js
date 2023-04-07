@@ -27,11 +27,39 @@ const db = getDatabase();
 // Get a reference to the users node
 const usersRef = ref(db, 'cards');
 onValue(usersRef, (snapshot) => {
+  const container = document.querySelector(".container");
+
   snapshot.forEach((child) => {
     const userData = child.val();
-    console.log(userData.title, userData.videoId);
+    //console.log(userData.title, userData.videoId, userData.description);
+
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    const title = document.createElement("h2");
+    title.classList.add("card-title");
+    title.textContent = userData.title;
+
+    const description = document.createElement("p");
+    description.classList.add("card-description");
+    description.textContent = userData.description;
+
+    const video = document.createElement("div");
+    video.setAttribute("id", "player");
+    video.setAttribute("data-plyr-provider", "youtube");
+    video.setAttribute("data-plyr-embed-id", userData.videoId);
+
+    card.appendChild(title);
+    card.appendChild(description);
+    card.appendChild(video);
+    container.appendChild(card);
+
+    // Inicializar Plyr
+    const player = new Plyr(video);
+
   });
 });
+
 // document.addEventListener("DOMContentLoaded", async () => {
 //   const container = document.querySelector(".container");
 
