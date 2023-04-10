@@ -3,6 +3,9 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase
 import { getDatabase, ref, child, get,onValue } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js'
 
 
+const fab = document.getElementById("mi-fab");
+const iframe = document.getElementById("mi-iframe");
+
 const firebaseConfig = {
   apiKey: "AIzaSyCiePTvHxga77QSi1FwWL8v67aExIJuiXo",
   authDomain: "demofit-c6501.firebaseapp.com",
@@ -45,9 +48,10 @@ onValue(usersRef, (snapshot) => {
     video.setAttribute("data-plyr-provider", "youtube");
     video.setAttribute("data-plyr-embed-id", userData.videoId);
 
+
+    card.appendChild(video);
     card.appendChild(title);
     card.appendChild(description);
-    card.appendChild(video);
     container.appendChild(card);
 
     // Inicializar Plyr
@@ -55,3 +59,14 @@ onValue(usersRef, (snapshot) => {
 
   });
 });
+
+
+fab.addEventListener("click", function() {
+  if (iframe.style.display === "none") {
+    iframe.style.display = "block";
+  } else {
+    iframe.style.display = "none";
+  }
+});
+
+

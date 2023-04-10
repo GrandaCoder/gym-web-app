@@ -1,0 +1,127 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  --plyr-color-main: #f71ae4;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.card-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.card-description {
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.home-btn{
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #BDBDBD;
+  margin: 10px;
+  position: relative;
+}
+
+.home-btn a{
+  font-family: 'Ubuntu', sans-serif;
+  background-color: rgba(167, 15, 255, 0.8);
+  border-radius: 10px;
+  color: #ffffff;
+  display: flex;
+  font-size: 14px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  /* Agrega ancho y alto del 100% */
+  width: 100%;
+  height: 100%;
+  /* Agrega un borde superior de 2px para darle un aspecto de botón */
+}
+.iframe-container{
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+/*floating action buttom*/
+.fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: blue;
+  color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 30px;
+  line-height: 50px;
+  cursor: pointer;
+  z-index: 9999;
+  transition: transform 0.5s ease-out;
+}
+
+img{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Estilo para el iframe */
+#mi-iframe {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9998;
+
+}
+
+
+iframe {
+  overflow: hidden;
+}
+
+
+
+@media (min-width: 768px) {
+  .card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    width: calc(33.333% - 20px);
+  }
+}
