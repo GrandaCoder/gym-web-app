@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
-import { getDatabase, ref, child, get,onValue } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js'
+import { getDatabase, ref, child, get, onValue } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js'
 
 
 const fab = document.getElementById("mi-fab");
@@ -28,7 +28,7 @@ const usersRef = ref(db, 'cards');
 onValue(usersRef, (snapshot) => {
   const container = document.querySelector(".container");
   container.innerHTML = '';
-  
+
   snapshot.forEach((child) => {
     const userData = child.val();
     //console.log(userData.title, userData.videoId, userData.description);
@@ -43,10 +43,21 @@ onValue(usersRef, (snapshot) => {
     description.classList.add("card-description");
     description.textContent = userData.description;
 
-    const video = document.createElement("div");
-    video.setAttribute("id", "player");
-    video.setAttribute("data-plyr-provider", "youtube");
-    video.setAttribute("data-plyr-embed-id", userData.videoId);
+    // const video = document.createElement("div");
+    // video.setAttribute("id", "player");
+    // video.setAttribute("data-plyr-provider", "youtube");
+    // video.setAttribute("data-plyr-embed-id", userData.videoId);
+
+
+    const video = document.createElement("iframe");
+    video.setAttribute("src", "https://www.youtube.com/embed/" + userData.videoId+"?showinfo=0&rel=0&modestbranding=1&autohide=1");
+    video.setAttribute("title", "YouTube video player");
+    video.setAttribute("frameborder", "0");
+    video.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+    video.setAttribute("allowfullscreen", "");
+
+
+
 
 
     card.appendChild(video);
@@ -55,10 +66,14 @@ onValue(usersRef, (snapshot) => {
     container.appendChild(card);
 
     // Inicializar Plyr
-    const player = new Plyr(video);
+    //  const player = new Plyr(video);
 
   });
 });
+
+
+
+//<iframe width="560" height="315" src="https://www.youtube.com/embed/KRntP-q_R9s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
 // fab.addEventListener("click", function() {
