@@ -19,8 +19,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-
 const db = getDatabase();
 
 // Get a reference to the users node
@@ -48,15 +46,6 @@ onValue(usersRef, (snapshot) => {
     video.setAttribute("data-plyr-provider", "youtube");
     video.setAttribute("data-plyr-embed-id", userData.videoId);
 
-
-    // const video = document.createElement("iframe");
-    // video.setAttribute("src", "https://www.youtube.com/embed/" + userData.videoId+"?showinfo=0&rel=0&modestbranding=1&autohide=1");
-    // video.setAttribute("title", "YouTube video player");
-    // video.setAttribute("frameborder", "0");
-    // video.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
-    // video.setAttribute("allowfullscreen", "");
-
-
     card.appendChild(video);
     card.appendChild(title);
     card.appendChild(description);
@@ -68,17 +57,12 @@ onValue(usersRef, (snapshot) => {
   });
 });
 
-
-
-//<iframe width="560" height="315" src="https://www.youtube.com/embed/KRntP-q_R9s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-
-// fab.addEventListener("click", function() {
-//   if (iframe.style.display === "none") {
-//     iframe.style.display = "block";
-//   } else {
-//     iframe.style.display = "none";
-//   }
-// });
+fab.addEventListener("click", function() {
+  if (iframe.style.display === "none") {
+    iframe.style.display = "block";
+  } else {
+    iframe.style.display = "none";
+  }
+});
 
 

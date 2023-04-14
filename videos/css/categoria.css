@@ -1,32 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
 
+html{
+    height: 100%;
+}
 
-.card {
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url(../img/fondo38.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    width: 100%;
+}
+
+/* .card {
+    width: 250px;
     border-radius: 20px;
     box-shadow: 0 0 10px #BDBDBD;
     margin: 10px;
     padding: 50px;
     position: relative;
-    /* Agrega padding al contenedor de la card */
     padding-bottom: 40px;
-}
-.card a {
+} */
+a {
+    margin: 10px;
     font-family: 'Ubuntu', sans-serif;
     background-color: rgba(167, 15, 255, 0.8);
-    border-radius: 20px;
+    border-radius: 5px;
     color: #ffffff;
     display: flex;
     font-size: 14px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    margin: 10px;
     /* Agrega ancho y alto del 100% */
+    width: 90%;
+    height: 100px;
+    /* Agrega un borde superior de 2px para darle un aspecto de botón */
+}
+
+.cards-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+iframe{
     width: 100%;
     height: 100%;
-    /* Agrega un borde superior de 2px para darle un aspecto de botón */
+    border: 0;
+    border-radius: 4px;
 }
