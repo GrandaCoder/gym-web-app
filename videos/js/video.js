@@ -21,13 +21,26 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 
+let params = (new URL(document.location)).searchParams;
+let category = params.get("category");
+console.log(category);
 // Get a reference to the users node
-const usersRef = ref(db, 'cards');
+const usersRef = ref(db, `cards/${category}`);
+
 onValue(usersRef, (snapshot) => {
   const container = document.querySelector(".container");
   container.innerHTML = '';
 
+  // const usersRef = ref(db, 'cards');
+  // const snapshotCards = snapshot.child();
+  
+  // console.log(snapshot);
+
+
+
   snapshot.forEach((child) => {
+
+
     const userData = child.val();
     //console.log(userData.title, userData.videoId, userData.description);
     const card = document.createElement("div");
