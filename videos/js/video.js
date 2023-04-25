@@ -40,33 +40,38 @@ onValue(usersRef, (snapshot) => {
 
   snapshot.forEach((child) => {
 
+    console.log(child.key);
 
-    const userData = child.val();
-    //console.log(userData.title, userData.videoId, userData.description);
-    const card = document.createElement("div");
-    card.classList.add("card");
+    const nameChild = child.key;
+    const prefix = "ej";
 
-    const title = document.createElement("h2");
-    title.classList.add("card-title");
-    title.textContent = userData.title;
-
-    const description = document.createElement("p");
-    description.classList.add("card-description");
-    description.textContent = userData.description;
-
-    const video = document.createElement("div");
-    video.setAttribute("id", "player");
-    video.setAttribute("data-plyr-provider", "youtube");
-    video.setAttribute("data-plyr-embed-id", userData.videoId);
-
-    card.appendChild(video);
-    card.appendChild(title);
-    card.appendChild(description);
-    container.appendChild(card);
-
-    // Inicializar Plyr
-    const player = new Plyr(video);
-
+    if(nameChild.startsWith(prefix)){
+      const userData = child.val();
+      //console.log(userData.title, userData.videoId, userData.description);
+      const card = document.createElement("div");
+      card.classList.add("card");
+  
+      const title = document.createElement("h2");
+      title.classList.add("card-title");
+      title.textContent = userData.title;
+  
+      const description = document.createElement("p");
+      description.classList.add("card-description");
+      description.textContent = userData.description;
+  
+      const video = document.createElement("div");
+      video.setAttribute("id", "player");
+      video.setAttribute("data-plyr-provider", "youtube");
+      video.setAttribute("data-plyr-embed-id", userData.videoId);
+  
+      card.appendChild(video);
+      card.appendChild(title);
+      card.appendChild(description);
+      container.appendChild(card);
+  
+      // Inicializar Plyr
+      const player = new Plyr(video);
+    }
   });
 });
 

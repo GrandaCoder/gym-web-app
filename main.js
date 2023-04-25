@@ -69,3 +69,4 @@ function loadRecetas() {
 // }
 
 document.addEventListener('DOMContentLoaded', loadRecetas);
+
