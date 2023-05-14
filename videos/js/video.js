@@ -57,7 +57,22 @@ onValue(usersRef, (snapshot) => {
   
       const description = document.createElement("p");
       description.classList.add("card-description");
-      description.textContent = userData.description;
+      description.innerHTML = `<strong>Descripción:</strong> ${userData.description}`;
+      
+      const duracion = document.createElement("p");
+      duracion.classList.add("card-description");
+      duracion.innerHTML = `<strong>Duración:</strong> ${userData.time}`;
+
+      //series
+      const series = document.createElement("p");
+      series.classList.add("card-description");
+      series.innerHTML = `<strong>Series:</strong> ${userData.series}`;
+
+      //Musculos trabajados
+      const musculos = document.createElement("p");
+      musculos.classList.add("card-description");
+      musculos.innerHTML = `<strong>Grupos musculares involucrados:</strong> ${userData.muscles}`;
+
   
       const video = document.createElement("div");
       video.setAttribute("id", "player");
@@ -67,6 +82,10 @@ onValue(usersRef, (snapshot) => {
       card.appendChild(video);
       card.appendChild(title);
       card.appendChild(description);
+      card.appendChild(duracion);
+      card.appendChild(series);
+      card.appendChild(musculos);
+
       container.appendChild(card);
   
       // Inicializar Plyr
