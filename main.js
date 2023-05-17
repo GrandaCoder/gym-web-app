@@ -36,6 +36,7 @@ function createCard(receta) {
 
 function loadRecetas() {
     const recetasContainer = document.getElementById('recetas-container');
+    recetasContainer.innerHTML = '';
     const usersRef = ref(db, 'recetas');
     onValue(usersRef, (snapshot) => {
         snapshot.forEach((child) => {
