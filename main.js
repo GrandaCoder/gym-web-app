@@ -38,7 +38,6 @@ function loadRecetas() {
     const recetasContainer = document.getElementById('recetas-container');
     const usersRef = ref(db, 'recetas');
     onValue(usersRef, (snapshot) => {
-        // Limpia el contenedor antes de agregar nuevas recetas
         console.log("cargando recetas");
         recetasContainer.innerHTML = '';
         snapshot.forEach((child) => {
@@ -49,24 +48,6 @@ function loadRecetas() {
         });
     });
 }
-
-// function loadRecetas() {
-//     const xhttp = new XMLHttpRequest();
-//     xhttp.onreadystatechange = function () {
-//         if (this.readyState === 4 && this.status === 200) {
-//             const recetasContainer = document.getElementById('recetas-container');
-//             const lines = this.responseText.split('\n');
-//             lines.forEach(line => {
-//                 const [nombre, imagen, descripcion] = line.split(';');
-//                 const receta = { nombre, imagen, descripcion };
-//                 const card = createCard(receta);
-//                 recetasContainer.appendChild(card);
-//             });
-//         }
-//     };
-//     xhttp.open('GET', 'recetas.txt', true);
-//     xhttp.send();
-// }
 
 document.addEventListener('DOMContentLoaded', loadRecetas);
 

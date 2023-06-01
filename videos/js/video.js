@@ -17,26 +17,17 @@ const firebaseConfig = {
   measurementId: "G-V3PB26LJ3P"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 
 let params = (new URL(document.location)).searchParams;
 let category = params.get("category");
 console.log(category);
-// Get a reference to the users node
 const usersRef = ref(db, `cards/${category}`);
 
 onValue(usersRef, (snapshot) => {
   const container = document.querySelector(".container");
   container.innerHTML = '';
-
-  // const usersRef = ref(db, 'cards');
-  // const snapshotCards = snapshot.child();
-  
-  // console.log(snapshot);
-
-
 
   snapshot.forEach((child) => {
 
@@ -47,7 +38,6 @@ onValue(usersRef, (snapshot) => {
 
     if(nameChild.startsWith(prefix)){
       const userData = child.val();
-      //console.log(userData.title, userData.videoId, userData.description);
       const card = document.createElement("div");
       card.classList.add("card");
   
@@ -63,12 +53,9 @@ onValue(usersRef, (snapshot) => {
       duracion.classList.add("card-description");
       duracion.innerHTML = `<strong>Duración:</strong> ${userData.time}`;
 
-      //series
       const series = document.createElement("p");
       series.classList.add("card-description");
       series.innerHTML = `<strong>Series:</strong> ${userData.series}`;
-
-      //Musculos trabajados
       const musculos = document.createElement("p");
       musculos.classList.add("card-description");
       musculos.innerHTML = `<strong>Grupos musculares involucrados:</strong> ${userData.muscles}`;
@@ -87,8 +74,6 @@ onValue(usersRef, (snapshot) => {
       card.appendChild(musculos);
 
       container.appendChild(card);
-  
-      // Inicializar Plyr
       const player = new Plyr(video);
     }
   });

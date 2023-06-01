@@ -12,14 +12,12 @@ const firebaseConfig = {
     measurementId: "G-V3PB26LJ3P"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 
 
 const contenedor = document.getElementById('contenedor');
 
-// Get a reference to the users node
 const usersRef = ref(db, `cards`);
 onValue(usersRef, (snapshot) => {
 
@@ -27,13 +25,11 @@ onValue(usersRef, (snapshot) => {
     snapshot.forEach((child) => {
         const cardKey = child.key
         const cardData = child.val();
-        // console.log(`Clave: ${cardKey}, Datos: ${}`);
         createCardCategory(cardKey, cardData.categoryName);
     });
 });
 
 function createCardCategory(nombreSnapshot, nombreCategoria) {
-    // 	<a href="videos.html?category=ej_hombres">Ejercicios para hombres</a>
     const a = document.createElement('a');
     a.href = `videos.html?category=${nombreSnapshot}`;
     a.textContent = nombreCategoria;
