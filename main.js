@@ -36,9 +36,11 @@ function createCard(receta) {
 
 function loadRecetas() {
     const recetasContainer = document.getElementById('recetas-container');
-    recetasContainer.innerHTML = '';
     const usersRef = ref(db, 'recetas');
     onValue(usersRef, (snapshot) => {
+        // Limpia el contenedor antes de agregar nuevas recetas
+        console.log("cargando recetas");
+        recetasContainer.innerHTML = '';
         snapshot.forEach((child) => {
             const recetaData = child.val();
             console.log(recetaData);
@@ -46,9 +48,6 @@ function loadRecetas() {
             recetasContainer.appendChild(card);
         });
     });
-
-    // const receta = { nombre, imagen, descripcion };
-
 }
 
 // function loadRecetas() {
